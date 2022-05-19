@@ -22,30 +22,23 @@ from read_uav_data import read_imet_data, read_deltaquad_position_data
 intaractive = not hasattr(main, '__file__')
 
 parser = argparse.ArgumentParser()
-parser.add_argument('date', type=str, help='date (=foldername) of imet')
-parser.add_argument('flight_number_imet', type=str, help='filename of imet log (e.g. LOG06)')
-parser.add_argument('flight_number_deltaquad', type=str,
-                    help='optional. number of deltaquad log (without .ulg extension), placed in ./data/'
-                         ' of deltaquad log (e.g. 11_31_28)',
+parser.add_argument('imet_file', type=str, help='filename of imet log (e.g. LOG06.txt)')
+parser.add_argument('deltaquad_file', type=str,
+                    help='optional. number of deltaquad log (e.g. 11_31_28.ulg)',
                     default='none', nargs='?')
 
 if intaractive:
-    date = '20220503'
-    flight_number_imet = "LOG06"
-    flight_nnumber_deltaquad = '11_31_28'
+    imet_file = "imet/20220503/LOG06.txt"
+    ifile_dq = 'deltaquad/11_31_28.ulg'
 else:
     args = parser.parse_args()
-    date = args.date
-    flight_number_imet = args.flight_number_imet
-    flight_nnumber_deltaquad = args.flight_number_deltaquad
+    imet_file = args.flight_number_imet
+    ifile_dq = args.flight_number_deltaquad
 
-plotdir = f'plots/{date}/{flight_number_imet}'
+plotdir = f'plots/{os.path.splitext(imet_file)[0]}'
 os.makedirs(plotdir, exist_ok=True)
 
-ifile = f'{date}/{flight_number_imet}.txt'
-ifile_dq = f'data/{flight_nnumber_deltaquad}/{flight_nnumber_deltaquad}_vehicle_gps_position_0.csv'
-
-df_imet_raw = read_imet_data(ifile)
+df_imet_raw = read_imet_data(imet_file)
 
 # remove duplicates
 duplicate_pos, = np.where(df_imet_raw['datetime'].duplicated())
@@ -56,7 +49,7 @@ assert (~df_imet_raw['datetime'].duplicated().any())
 plt.figure()
 plt.scatter(df_imet_raw['lon'], df_imet_raw['lat'], c=df_imet_raw['t'])
 plt.colorbar()
-plt.savefig(f'{plotdir}/{date}-{flight_number_imet}-lat-lon-p.svg')
+plt.savefig(f'{plotdir}/imet-lat-lon-p.svg')
 
 n_vars = df_imet_raw.shape[1]
 plt.figure(figsize=(10, 20))
@@ -65,8 +58,8 @@ for i in range(n_vars):
     plt.plot(df_imet_raw[df_imet_raw.keys()[i]])
     plt.ylabel(df_imet_raw.keys()[i])
 plt.xlabel('step')
-plt.savefig(f'{plotdir}/{date}-{flight_number_imet}-overviewplot.svg')
-plt.savefig(f'{plotdir}/{date}-{flight_number_imet}-overviewplot.png')
+plt.savefig(f'{plotdir}/imet-overviewplot.svg')
+plt.savefig(f'{plotdir}/imet-overviewplot.png')
 
 # remove all "weird" lat and lons
 df = df_imet_raw.query('lon > 180')
@@ -75,7 +68,7 @@ plt.scatter(df['lon'], df['lat'], c=df['alt'])
 cb = plt.colorbar()
 cb.set_label('alt')
 plt.plot(df['lon'], df['lat'])
-plt.savefig(f'{plotdir}/{date}-{flight_number_imet}-lat-lon-alt_imetvalidcoords.svg')
+plt.savefig(f'{plotdir}/imet-lat-lon-alt_imetvalidcoords.svg')
 
 fig = plt.figure(figsize=(8, 8))
 ax = plt.axes(projection='3d')
@@ -87,7 +80,7 @@ ax.set_ylabel('lat')
 ax.set_zlabel('alt')
 cb = plt.colorbar(cf)
 cb.set_label('t')
-plt.savefig(f'{plotdir}/{date}-{flight_number_imet}-3D-lat-lon-alt-t_imetvalidcoords.svg')
+plt.savefig(f'{plotdir}/imet-3D-lat-lon-alt-t_imetvalidcoords.svg')
 
 n_vars = df.shape[1]
 plt.figure(figsize=(10, 20))
@@ -96,16 +89,21 @@ for i in range(n_vars):
     plt.plot(df[df.keys()[i]])
     plt.ylabel(df.keys()[i])
 plt.xlabel('step')
-plt.savefig(f'{plotdir}/{date}-{flight_number_imet}-overviewplot-imetvalidcoords.svg')
-plt.savefig(f'{plotdir}/{date}-{flight_number_imet}-overviewplot-imetvalidcoords.png')
+plt.savefig(f'{plotdir}/imet-overviewplot-imetvalidcoords.svg')
+plt.savefig(f'{plotdir}/imet-overviewplot-imetvalidcoords.png')
 
 # read in corresponding deltaquad file
-if flight_nnumber_deltaquad != 'none':
+if ifile_dq != 'none':
 
-    res = os.system(f'ulog2csv  -o data/{flight_nnumber_deltaquad} data/{flight_nnumber_deltaquad}.ulg')
+    dq_converted_folder = os.path.splitext(ifile_dq)[0]
+    res = os.system(f'ulog2csv  -o {dq_converted_folder} {ifile_dq}')
     if res != 0:
         raise Exception('ulog conversion failed!')
-    df_dq_raw = read_deltaquad_position_data(ifile_dq, round_time='1s')
+
+    # the converted files start with the original filename (without parent folders)
+    base_filename_dq_no_ext = os.path.splitext(os.path.basename(ifile_dq))[0]
+    dw_converted_file = f'{dq_converted_folder}/{base_filename_dq_no_ext}_vehicle_gps_position_0.csv'
+    df_dq_raw = read_deltaquad_position_data(dw_converted_file, round_time='1s')
 
     # find common datetimes
     common_dates = pd.Series(list(set(df_dq_raw['datetime']) & set(df_imet_raw['datetime'])))
@@ -130,8 +128,8 @@ if flight_nnumber_deltaquad != 'none':
         plt.plot(df[df.keys()[i]])
         plt.ylabel(df.keys()[i])
     plt.xlabel('step')
-    plt.savefig(f'{plotdir}/{date}-{flight_number_imet}-overviewplot_uavcoords.svg')
-    plt.savefig(f'{plotdir}/{date}-{flight_number_imet}-overviewplot_uavcoords.png')
+    plt.savefig(f'{plotdir}/imet-overviewplot_uavcoords.svg')
+    plt.savefig(f'{plotdir}/imet-overviewplot_uavcoords.png')
 
     fig = plt.figure(figsize=(8, 8))
     ax = plt.axes(projection='3d')
@@ -143,7 +141,7 @@ if flight_nnumber_deltaquad != 'none':
     ax.set_zlabel('alt_uav')
     cb = plt.colorbar(cf)
     cb.set_label('t')
-    plt.savefig(f'{plotdir}/{date}-{flight_number_imet}-3D-lat-lon-alt-t_uavcoords.svg')
+    plt.savefig(f'{plotdir}/imet-3D-lat-lon-alt-t_uavcoords.svg')
 
     plt.figure()
     plt.subplot(221)
@@ -158,4 +156,4 @@ if flight_nnumber_deltaquad != 'none':
     plt.scatter(df['alt'], df['alt_uav'])
     plt.xlabel('alt imet')
     plt.ylabel('alt uav')
-    plt.savefig(f'{plotdir}/{date}-{flight_number_imet}-imetcoord_vs_uavcoords.svg')
+    plt.savefig(f'{plotdir}/imet-imetcoord_vs_uavcoords.svg')
