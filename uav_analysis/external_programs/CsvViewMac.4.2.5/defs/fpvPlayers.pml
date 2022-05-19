@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<players>
+	<sigPlayer>
+		<name>Example1</name>
+		<signal>
+			<name>Altitude</name>
+			<color>#0000ff</color>
+			<stroke>thick</stroke>
+		</signal>
+		<signal>
+			<name>Speed</name>
+			<color>#009999</color>
+			<stroke>thick</stroke>
+		</signal>
+	</sigPlayer>
+	<geoPlayer>
+		<geopath>
+			<name>AC</name>
+			<symbol>A</symbol>
+			<Latitude>Latitude</Latitude>
+			<Longitude>Longitude</Longitude>
+			<Altitude>Altitude</Altitude>
+			<headingSignal>Yaw</headingSignal>
+		</geopath>
+		<geopath>
+			<name>Tablet/RC</name>
+			<Latitude>deviceLatitude</Latitude>
+			<Longitude>deviceLongitude</Longitude>
+		</geopath>
+		<geopath>
+			<name>Home</name>
+			<Latitude>homeLatitude</Latitude>
+			<Longitude>homeLongitude</Longitude>
+		</geopath>
+	</geoPlayer>
+</players>

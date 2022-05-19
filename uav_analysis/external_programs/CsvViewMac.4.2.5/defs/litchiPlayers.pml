@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<players>
+	<sigPlayer>
+		<name>Example1</name>
+		<signal>
+			<name>Altitude</name>
+			<color>#ff0000</color>
+			<stroke>thick</stroke>
+		</signal>
+		<signal>
+			<name>remainPowerPercent</name>
+			<color>#00ff00</color>
+			<stroke>thick</stroke>
+		</signal>
+		<signal>
+			<name>flightmode</name>
+			<color>#000000</color>
+			<stroke>thin</stroke>
+		</signal>
+	</sigPlayer>
+	<geoPlayer>
+		<geopath>
+			<name>AC</name>
+			<symbol>A</symbol>
+			<Latitude>Latitude</Latitude>
+			<Longitude>Longitude</Longitude>
+			<Altitude>Altitude</Altitude>
+			<headingSignal>Yaw</headingSignal>
+		</geopath>
+		<geopath>
+			<name>Home</name>
+			<Latitude>home_latitude</Latitude>
+			<Longitude>home_longitude</Longitude>
+		</geopath>
+	</geoPlayer>
+</players>

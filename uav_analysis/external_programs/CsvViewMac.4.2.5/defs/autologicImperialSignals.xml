@@ -1,0 +1,1264 @@
+<?xml version="1.0"?>
+<signals>
+	<axis>
+		<name>cellVolt</name>
+		<label>Cell Volt</label>
+	</axis>
+	<axis>
+		<name>control</name>
+		<label>Control</label>
+	</axis>
+	<timeAxis>
+		<sigName>Elapsed Time</sigName>
+		<colName>Elapsed Time (sec)</colName>
+		<numType>float</numType>
+	</timeAxis>
+	<series>
+		<sigName>Flight Director Status Message</sigName>
+		<colName>Flight Director Status Message</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Flight Director Status Disposition</sigName>
+		<colName>Flight Director Status Disposition</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Flight Director Status Disposition Value</sigName>
+		<colName>Flight Director Status Disposition Value</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Flight Plan ID</sigName>
+		<colName>Flight Plan ID</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Flight Plan Name</sigName>
+		<colName>Flight Plan Name</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Flight Director Mode</sigName>
+		<colName>Flight Director Mode</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Flight Director Activated</sigName>
+		<colName>Flight Director Activated</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Device Battery (%)</sigName>
+		<colName>Device Battery (%)</colName>
+		<numType>float</numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Device Heading</sigName>
+		<colName>Device Heading (Degrees)</colName>
+		<numType>float</numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Device Heading Last Updated (ms)</sigName>
+		<colName>Device Heading Last Updated (ms)</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Device Latitude</sigName>
+		<colName>Device Latitude (Degrees)</colName>
+		<numType>double</numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Device Longitude</sigName>
+		<colName>Device Longitude (Degrees)</colName>
+		<numType>double</numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Device Course</sigName>
+		<colName>Device Course (Degrees)</colName>
+		<numType>float</numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Device Speed</sigName>
+		<colName>Device Speed (mph)</colName>
+		<numType>float</numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Device GPS Altitude</sigName>
+		<colName>Device GPS Altitude - MSL (ft)</colName>
+		<numType>float</numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Device Vertical Accuracy</sigName>
+		<colName>Device Vertical Accuracy (ft)</colName>
+		<numType>float</numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Device Horizontal Accuracy</sigName>
+		<colName>Device Horizontal Accuracy (ft)</colName>
+		<numType>float</numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Device Location Last Updated (ms)</sigName>
+		<colName>Device Location Last Updated (ms)</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Device Barometric Pressure (inHg)</sigName>
+		<colName>Device Barometric Pressure (inHg)</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Device Barometric Altitude</sigName>
+		<colName>Device Barometric Altitude (ft)</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Device Barometer Last Updated (ms)</sigName>
+		<colName>Device Barometer Last Updated (ms)</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Device Pitch</sigName>
+		<colName>Device Pitch (Degrees)</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Device Roll</sigName>
+		<colName>Device Roll (Degrees)</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Device Motion Last Updated (ms)</sigName>
+		<colName>Device Motion Last Updated (ms)</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Device Physical Orientation</sigName>
+		<colName>Device Physical Orientation</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Device Physical Orientation Value</sigName>
+		<colName>Device Physical Orientation Value</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Device Interface Orientation</sigName>
+		<colName>Device Interface Orientation</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Device Interface Orientation Value</sigName>
+		<colName>Device Interface Orientation Value</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Battery Power (%)</sigName>
+		<colName>Aircraft Battery Power (%)</colName>
+		<numType>float</numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Battery Charge (mAh)</sigName>
+		<colName>Aircraft Battery Charge (mAh)</colName>
+		<numType>float</numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Battery Current (mA)</sigName>
+		<colName>Aircraft Battery Current (mA)</colName>
+		<numType>float</numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Battery Voltage (mV)</sigName>
+		<colName>Aircraft Battery Voltage (mV)</colName>
+		<numType>float</numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Battery Temperature</sigName>
+		<colName>Aircraft Battery Temperature (Fahrenheit)</colName>
+		<numType>float</numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Battery Last Updated (ms)</sigName>
+		<colName>Aircraft Battery Last Updated (ms)</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Battery Cell 1 Voltage (mV)</sigName>
+		<colName>Aircraft Battery Cell 1 Voltage (mV)</colName>
+		<numType>float</numType>
+		<axis>cellVolt</axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Battery Cell 2 Voltage (mV)</sigName>
+		<colName>Aircraft Battery Cell 2 Voltage (mV)</colName>
+		<numType>float</numType>
+		<axis>cellVolt</axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Battery Cell 3 Voltage (mV)</sigName>
+		<colName>Aircraft Battery Cell 3 Voltage (mV)</colName>
+		<numType>float</numType>
+		<axis>cellVolt</axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Battery Cell 4 Voltage (mV)</sigName>
+		<colName>Aircraft Battery Cell 4 Voltage (mV)</colName>
+		<numType>float</numType>
+		<axis>cellVolt</axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Latitude</sigName>
+		<colName>Aircraft Latitude (Degrees)</colName>
+		<numType>double</numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Longitude</sigName>
+		<colName>Aircraft Longitude (Degrees)</colName>
+		<numType>double</numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Course</sigName>
+		<colName>Aircraft Course (Degrees)</colName>
+		<numType>float</numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Speed</sigName>
+		<colName>Aircraft Speed (mph)</colName>
+		<numType>float</numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Barometric Altitude</sigName>
+		<colName>Aircraft Barometric Altitude (ft)</colName>
+		<numType>float</numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Altitude</sigName>
+		<colName>Aircraft Altitude (ft)</colName>
+		<numType>float</numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Yaw</sigName>
+		<colName>Aircraft Heading (Degrees)</colName>
+		<numType>float</numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Total Distance</sigName>
+		<colName>Aircraft Total Distance (ft)</colName>
+		<numType>float</numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Vel - X</sigName>
+		<colName>Aircraft Vel - X (mph)</colName>
+		<numType>float</numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Vel - Y</sigName>
+		<colName>Aircraft Vel - Y (mph)</colName>
+		<numType>float</numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Vel - Z</sigName>
+		<colName>Aircraft Vel - Z (mph)</colName>
+		<numType>float</numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Acc - X (m/sÂ²)</sigName>
+		<colName>Aircraft Acc - X (m/sÂ²)</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Acc - Y (m/sÂ²)</sigName>
+		<colName>Aircraft Acc - Y (m/sÂ²)</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Acc - Z (m/sÂ²)</sigName>
+		<colName>Aircraft Acc - Z (m/sÂ²)</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Pitch</sigName>
+		<colName>Aircraft Pitch (Degrees)</colName>
+		<numType>float</numType>
+		<axis>float</axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Roll</sigName>
+		<colName>Aircraft Roll (Degrees)</colName>
+		<numType>float</numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Num Satellites</sigName>
+		<colName>Aircraft Satellites</colName>
+		<numType>int</numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Motors On</sigName>
+		<colName>Aircraft Motors On</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Flying</sigName>
+		<colName>Aircraft Flying</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>IMU Preheating</sigName>
+		<colName>Aircraft IMU Preheating</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Ultrasonic On</sigName>
+		<colName>Aircraft Ultrasonic On</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Ultrasonic Altitude</sigName>
+		<colName>Aircraft Ultrasonic Altitude (ft)</colName>
+		<numType>float</numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Vision On</sigName>
+		<colName>Aircraft Vision On</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>GPS Signal</sigName>
+		<colName>Aircraft GPS Signal</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>GPS Signal Value</sigName>
+		<colName>Aircraft GPS Signal Value</colName>
+		<numType>float</numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>No-fly Latitude</sigName>
+		<colName>Aircraft No-fly Latitude (Degrees)</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>No-fly Longitude</sigName>
+		<colName>Aircraft No-fly Longitude (Degrees)</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>No-fly Radius</sigName>
+		<colName>Aircraft No-fly Radius (ft)</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Virtual Stick</sigName>
+		<colName>Aircraft Virtual Stick</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Compass Error</sigName>
+		<colName>Aircraft Compass Error</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Compass Calibrating</sigName>
+		<colName>Aircraft Compass Calibrating</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Home Latitude</sigName>
+		<colName>Home Latitude (Degrees)</colName>
+		<numType>double</numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Home Longitude</sigName>
+		<colName>Home Longitude (Degrees)</colName>
+		<numType>double</numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Home Distance - XY</sigName>
+		<colName>Aircraft > Home Distance - XY (ft)</colName>
+		<numType>float</numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Home Distance - Z</sigName>
+		<colName>Aircraft > Home Distance - Z (ft)</colName>
+		<numType>float</numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Home Angle - XY</sigName>
+		<colName>Aircraft > Home Angle - XY (Degrees)</colName>
+		<numType>float</numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Home Angle - Z</sigName>
+		<colName>Aircraft > Home Angle - Z (Degrees)</colName>
+		<numType>float</numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Smart Go-home Flight Time Remaining (sec)</sigName>
+		<colName>Aircraft Smart Go-home Flight Time Remaining (sec)</colName>
+		<numType>float</numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Smart Go-home Return Time (sec)</sigName>
+		<colName>Aircraft Smart Go-home Return Time (sec)</colName>
+		<numType>float</numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Smart Go-home Landing Time (sec)</sigName>
+		<colName>Aircraft Smart Go-home Landing Time (sec)</colName>
+		<numType>float</numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Smart Go-home Return Power (%)</sigName>
+		<colName>Aircraft Smart Go-home Return Power (%)</colName>
+		<numType>float</numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Smart Go-home Landing Power (%)</sigName>
+		<colName>Aircraft Smart Go-home Landing Power (%)</colName>
+		<numType>float</numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Smart Go-home Radius</sigName>
+		<colName>Aircraft Smart Go-home Radius (ft)</colName>
+		<numType>float</numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Smart Go-home Requesting</sigName>
+		<colName>Aircraft Smart Go-home Requesting</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>System State Last Updated (ms)</sigName>
+		<colName>Aircraft System State Last Updated (ms)</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Gimbal Pitch</sigName>
+		<colName>Gimbal Pitch (Degrees)</colName>
+		<numType>float</numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Gimbal Roll</sigName>
+		<colName>Gimbal Roll (Degrees)</colName>
+		<numType>float</numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Gimbal Yaw</sigName>
+		<colName>Gimbal Yaw (Degrees)</colName>
+		<numType>float</numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Gimbal Pitch at Stop</sigName>
+		<colName>Gimbal Pitch at Stop</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Gimbal Roll at Stop</sigName>
+		<colName>Gimbal Roll at Stop</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Gimbal Yaw at Stop</sigName>
+		<colName>Gimbal Yaw at Stop</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Gimbal State Last Updated (ms)</sigName>
+		<colName>Gimbal State Last Updated (ms)</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Rudder</sigName>
+		<colName>RC Left Horizontal</colName>
+		<numType>float</numType>
+		<axis>control</axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Throttle</sigName>
+		<colName>RC Left Vertical</colName>
+		<numType>float</numType>
+		<axis>control</axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Aileron</sigName>
+		<colName>RC Right Horizontal</colName>
+		<numType>float</numType>
+		<axis>control</axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Elevator</sigName>
+		<colName>RC Right Vertical</colName>
+		<numType>float</numType>
+		<axis>control</axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>RC Left Wheel</sigName>
+		<colName>RC Left Wheel</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>RC Right Wheel</sigName>
+		<colName>RC Right Wheel</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>RC Landing Gear</sigName>
+		<colName>RC Landing Gear</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>RC Landing Gear Value</sigName>
+		<colName>RC Landing Gear Value</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>RC Go Home</sigName>
+		<colName>RC Go Home</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>RC Record</sigName>
+		<colName>RC Record</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>RC Shutter</sigName>
+		<colName>RC Shutter</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>RC Playback</sigName>
+		<colName>RC Playback</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>RC Pause</sigName>
+		<colName>RC Pause</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>RC Custom 1</sigName>
+		<colName>RC Custom 1</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>RC Custom 2</sigName>
+		<colName>RC Custom 2</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>RC State Last Updated (ms)</sigName>
+		<colName>RC State Last Updated (ms)</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>RC Battery (%)</sigName>
+		<colName>RC Battery (%)</colName>
+		<numType>float</numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>RC Satellites</sigName>
+		<colName>RC Satellites</colName>
+		<numType>int</numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>RC Horizontal Accuracy</sigName>
+		<colName>RC Horizontal Accuracy (ft)</colName>
+		<numType>float</numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>RC Latitude</sigName>
+		<colName>RC Latitude (Degrees)</colName>
+		<numType>double</numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>RC Longitude</sigName>
+		<colName>RC Longitude (Degrees)</colName>
+		<numType>double</numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>RC Course</sigName>
+		<colName>RC Course (Degrees)</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>RC Speed</sigName>
+		<colName>RC Speed (mph)</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>RC > Aircraft Distance - XY</sigName>
+		<colName>RC > Aircraft Distance - XY (ft)</colName>
+		<numType>float</numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>RC > Aircraft Distance - Z</sigName>
+		<colName>RC > Aircraft Distance - Z (ft)</colName>
+		<numType>float</numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>RC > Aircraft Angle - XY</sigName>
+		<colName>RC > Aircraft Angle - XY (Degrees)</colName>
+		<numType>float</numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>RC > Aircraft Angle - Z</sigName>
+		<colName>RC > Aircraft Angle - Z (Degrees)</colName>
+		<numType>float</numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>RC GPS Last Updated (ms)</sigName>
+		<colName>RC GPS Last Updated (ms)</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>RC Signal (%)</sigName>
+		<colName>RC Signal (%)</colName>
+		<numType>float</numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>RC Signal Last Updated (ms)</sigName>
+		<colName>RC Signal Last Updated (ms)</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Light Bridge Channel</sigName>
+		<colName>Light Bridge Channel</colName>
+		<numType>int</numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Light Bridge Signal (%)</sigName>
+		<colName>Light Bridge Signal (%)</colName>
+		<numType>float</numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Light Bridge Signal Last Updated (ms)</sigName>
+		<colName>Light Bridge Signal Last Updated (ms)</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Camera Mode</sigName>
+		<colName>Aircraft Camera Mode</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Camera Mode Value</sigName>
+		<colName>Aircraft Camera Mode Value</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Camera Overheated</sigName>
+		<colName>Aircraft Camera Overheated</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Camera Sensor Error</sigName>
+		<colName>Aircraft Camera Sensor Error</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Camera Recording</sigName>
+		<colName>Aircraft Camera Recording</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Camera Raw Capture</sigName>
+		<colName>Aircraft Camera Raw Capture</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Camera Interval Capture</sigName>
+		<colName>Aircraft Camera Interval Capture</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Camera Burst Capture</sigName>
+		<colName>Aircraft Camera Burst Capture</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Camera Single Capture</sigName>
+		<colName>Aircraft Camera Single Capture</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Camera Storing Photo</sigName>
+		<colName>Aircraft Camera Storing Photo</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Camera SD Card Exists</sigName>
+		<colName>Aircraft Camera SD Card Exists</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Camera SD Card Remaining (%)</sigName>
+		<colName>Aircraft Camera SD Card Remaining (%)</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Camera Lens Focus Ring</sigName>
+		<colName>Aircraft Camera Lens Focus Ring</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Camera Lens Installed</sigName>
+		<colName>Aircraft Camera Lens Installed</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Camera Lens Type</sigName>
+		<colName>Aircraft Camera Lens Type</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Camera Lens Type Value</sigName>
+		<colName>Aircraft Camera Lens Type Value</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Camera Lens AF Enabled</sigName>
+		<colName>Aircraft Camera Lens AF Enabled</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Camera Lens Focus Mode</sigName>
+		<colName>Aircraft Camera Lens Focus Mode</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Camera Lens Focus Mode Value</sigName>
+		<colName>Aircraft Camera Lens Focus Mode Value</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Camera Lens Focus Status</sigName>
+		<colName>Aircraft Camera Lens Focus Status</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Camera Lens Focus Status Value</sigName>
+		<colName>Aircraft Camera Lens Focus Status Value</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Camera Lens MF Assistant</sigName>
+		<colName>Aircraft Camera Lens MF Assistant</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Camera Lens AF Assistant</sigName>
+		<colName>Aircraft Camera Lens AF Assistant</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Camera Lens Assistant Working</sigName>
+		<colName>Aircraft Camera Lens Assistant Working</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Device > Aircraft Distance - XY</sigName>
+		<colName>Device > Aircraft Distance - XY (ft)</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Device > Aircraft Distance - Z</sigName>
+		<colName>Device > Aircraft Distance - Z (ft)</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Device > Aircraft Angle - XY</sigName>
+		<colName>Device > Aircraft Angle - XY (Degrees)</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Device > Aircraft Angle - Z</sigName>
+		<colName>Device > Aircraft Angle - Z (Degrees)</colName>
+		<numType></numType>
+		<axis></axis>
+		<description></description>
+		<category></category>
+	</series>
+	<state>
+		<sigName>Flight Mode</sigName>
+		<colName>Aircraft Flight Mode</colName>
+		<inverse></inverse>
+		<stateSpec>
+			<stateName>P-GPS</stateName>
+			<index>6</index>
+			<color>white</color>
+		</stateSpec>
+	</state>
+	<state>
+		<sigName>Gimbal Mode</sigName>
+		<colName>Gimbal Mode</colName>
+		<inverse></inverse>
+		<stateSpec>
+			<stateName>Yaw</stateName>
+			<index>2</index>
+			<color>white</color>
+		</stateSpec>
+	</state>
+	<state>
+		<sigName>RC State</sigName>
+		<colName>RC State</colName>
+		<inverse></inverse>
+		<stateSpec>
+			<stateName>P</stateName>
+			<index>2</index>
+			<color>white</color>
+		</stateSpec>
+	</state>
+	<state>
+		<sigName>No-Fly</sigName>
+		<colName>Aircraft No-Fly</colName>
+		<inverse></inverse>
+		<stateSpec>
+			<stateName>None</stateName>
+			<index>2</index>
+			<color>white</color>
+		</stateSpec>
+	</state>
+</signals>
