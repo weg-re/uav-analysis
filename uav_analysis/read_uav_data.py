@@ -27,14 +27,18 @@ def read_imet_data(filename):
                 sample_dic = {
                     # 'xq': int(sample[0]),
                     'p': int(sample[1]),
-                    't': int(sample[2]),
+                    't': int(sample[2])/100,
                     'h': int(sample[3]),
-                    'UNKNOWN???': int(sample[4]),
+                    't2': int(sample[4])/100,
                     # we combine date and time into one entry
                     'datetime': pd.to_datetime(sample[6] + '-' + sample[7]),
                     'lat': int(sample[8]) / 1000000,
                     'lon': int(sample[9]) / 1000000,
-                    'alt': int(sample[10]) / 1000
+                    'alt': int(sample[10]) / 1000,
+                    'var1': int(sample[11]),
+                    'var2': int(sample[12]),
+                    'var3': int(sample[13]),
+
                 }
             except Exception as e:
                 print(f'parsing sample {sample} failed with error {e}, skipping')

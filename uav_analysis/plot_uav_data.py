@@ -43,6 +43,7 @@ df_imet_raw = read_imet_data(imet_file)
 # remove duplicates
 duplicate_pos, = np.where(df_imet_raw['datetime'].duplicated())
 df_imet_raw = df_imet_raw.groupby('datetime').head(1).reset_index()
+df_imet_raw = df_imet_raw.drop('index', axis=1)
 
 assert (~df_imet_raw['datetime'].duplicated().any())
 
@@ -92,6 +93,17 @@ plt.xlabel('step')
 plt.savefig(f'{plotdir}/imet-overviewplot-imetvalidcoords.svg')
 plt.savefig(f'{plotdir}/imet-overviewplot-imetvalidcoords.png')
 
+# height vs variables
+
+plt.figure(figsize=(30, 10))
+for i in range(n_vars):
+    plt.subplot(1, n_vars, i + 1)
+    plt.plot(df[df.keys()[i]].values, df['alt'], marker='x')
+    plt.xlabel(df.keys()[i])
+    plt.ylabel('alt')
+plt.savefig(f'{plotdir}/alt_vs_vars_imetvalidcoords.svg')
+plt.savefig(f'{plotdir}/alt_vs_vars_imetvalidcoords.png')
+
 # read in corresponding deltaquad file
 if ifile_dq != 'none':
 
@@ -104,7 +116,7 @@ if ifile_dq != 'none':
     base_filename_dq_no_ext = os.path.splitext(os.path.basename(ifile_dq))[0]
     dw_converted_file = f'{dq_converted_folder}/{base_filename_dq_no_ext}_vehicle_gps_position_0.csv'
     df_dq_raw = read_deltaquad_position_data(dw_converted_file, round_time='1s')
-
+    df_dq_raw = df_dq_raw.drop('index', axis=1)
     # find common datetimes
     common_dates = pd.Series(list(set(df_dq_raw['datetime']) & set(df_imet_raw['datetime'])))
 
@@ -113,7 +125,7 @@ if ifile_dq != 'none':
     assert (len(df_imet) == len(df_dq))
 
     # merge dq position into imet data
-    df_merged = df_imet.copy()
+    df_merged = df_imet.copy().drop('index', axis=1)
     df_merged['lat_uav'] = df_dq['lat'] / 1e7
     df_merged['lon_uav'] = df_dq['lon'] / 1e7
     df_merged['alt_uav'] = df_dq['alt'] / 1e3
@@ -157,3 +169,19 @@ if ifile_dq != 'none':
     plt.xlabel('alt imet')
     plt.ylabel('alt uav')
     plt.savefig(f'{plotdir}/imet-imetcoord_vs_uavcoords.svg')
+
+
+
+    # height vs variables
+
+    plt.figure(figsize=(30, 10))
+    for i in range(n_vars):
+        plt.subplot(1,n_vars, i + 1)
+        plt.plot(df[df.keys()[i]].values, df['alt_uav'])
+        plt.xlabel(df.keys()[i])
+        plt.ylabel('alt uav')
+    plt.savefig(f'{plotdir}/alt_vs_vars_uavcoords.svg')
+    plt.savefig(f'{plotdir}/alt_vs_vars_uavcoords.png')
+
+
+
