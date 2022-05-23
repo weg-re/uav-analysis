@@ -35,9 +35,9 @@ def read_imet_data(filename):
                     'lat': int(sample[8]) / 1000000,
                     'lon': int(sample[9]) / 1000000,
                     'alt': int(sample[10]) / 1000,
-                    'var1': int(sample[11]),
-                    'var2': int(sample[12]),
-                    'var3': int(sample[13]),
+                    #'var1': int(sample[11]),
+                    #'var2': int(sample[12]),
+                    #'var3': int(sample[13]),
 
                 }
             except Exception as e:
