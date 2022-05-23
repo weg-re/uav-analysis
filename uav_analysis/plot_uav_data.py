@@ -32,8 +32,8 @@ if intaractive:
     ifile_dq = 'deltaquad/11_31_28.ulg'
 else:
     args = parser.parse_args()
-    imet_file = args.flight_number_imet
-    ifile_dq = args.flight_number_deltaquad
+    imet_file = args.imet_file
+    ifile_dq = args.deltaquad_file
 
 plotdir = f'plots/{os.path.splitext(imet_file)[0]}'
 os.makedirs(plotdir, exist_ok=True)
