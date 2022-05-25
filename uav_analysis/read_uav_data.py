@@ -63,3 +63,23 @@ def read_deltaquad_position_data(filename, round_time=False):
         df = df.groupby('datetime').head(1).reset_index()
 
     return df
+
+
+def read_xq2_data(ifile):
+    df = pd.read_csv(ifile, parse_dates=True)
+    # extract only the XQ data (the rest is zero)
+    df = df[['XQ-iMet-XQ Pressure',
+             'XQ-iMet-XQ Air Temperature',
+             'XQ-iMet-XQ Humidity',
+             'XQ-iMet-XQ Humidity Temp',
+             'XQ-iMet-XQ Date',
+             'XQ-iMet-XQ Time',
+             'XQ-iMet-XQ Longitude',
+             'XQ-iMet-XQ Latitude',
+             'XQ-iMet-XQ Altitude',
+             'XQ-iMet-XQ Sat Count']]
+    # rename the columns (strip 'XQ-iMet-XQ '
+    df = df.rename(columns={k: k[11:] for k in df.keys()})
+    df['Datetime'] = pd.to_datetime(df['Date']+'-'+df['Time'])
+    df = df.drop(columns=['Date', 'Time'])
+    return df
