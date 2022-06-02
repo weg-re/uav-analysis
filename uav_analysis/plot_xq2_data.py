@@ -11,7 +11,7 @@ intaractive = not hasattr(main, '__file__')
 remove_first_n_entries = 32
 
 parser = argparse.ArgumentParser()
-parser.add_argument('imet_file', type=str, help='filename of xq2 log (csv file)')
+parser.add_argument('ifile', type=str, help='filename of xq2 log (csv file)')
 
 if intaractive:
     ifile = 'xq2/20220525-142415-00058755.csv'
