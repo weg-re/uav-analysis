@@ -13,6 +13,8 @@ import matplotlib
 
 matplotlib.use('agg')
 from pylab import plt
+import xarray as xr
+import pyproj
 from mpl_toolkits import mplot3d
 
 import __main__ as main
@@ -27,6 +29,8 @@ parser.add_argument('deltaquad_file', type=str,
                     help='optional. number of deltaquad log (e.g. 11_31_28.ulg)',
                     default='none', nargs='?')
 
+hack_shift_coordinats_to_quaamarujuk = False
+
 if intaractive:
     imet_file = "imet/20220503/LOG06.txt"
     ifile_dq = 'deltaquad/11_31_28.ulg'
@@ -37,6 +41,11 @@ else:
 
 plotdir = f'plots/{os.path.splitext(imet_file)[0]}'
 os.makedirs(plotdir, exist_ok=True)
+
+# read DEM data
+dem_file = 'demdata/DEMsOfDiffFromBaseMapQaa_20192022julsept.tif'
+# the dem file is in the EPSG:3413 projection, unit metres
+dem = xr.open_dataset(dem_file, engine='rasterio')
 
 df_imet_raw = read_imet_data(imet_file)
 
@@ -130,58 +139,73 @@ if ifile_dq != 'none':
     df_merged['lon_uav'] = df_dq['lon'] / 1e7
     df_merged['alt_uav'] = df_dq['alt'] / 1e3
 
-    # combined plots
+    # TODO START HACK
+    if hack_shift_coordinats_to_quaamarujuk:
+        print("WARNING!!! HACK!!! COORDINATES CHANGED!!! ONLY FOR TESTING!!!!")
+        target_lat = 71.172
+        target_lon = -51.1
+        # TODO: there is a problem her with precision, the small variations in lon and lat just vanish...
+        df_merged['lat_uav'] = df_merged['lat_uav'][0] - (df_merged['lat_uav'] - target_lat)
+        df_merged['lon_uav'] = df_merged['lon_uav'][0] - (df_merged['lon_uav'] - target_lon)
 
-    df = df_merged
-    n_vars = df.shape[1]
-    plt.figure(figsize=(7, 20))
-    for i in range(n_vars):
-        plt.subplot(n_vars, 1, i + 1)
-        plt.plot(df[df.keys()[i]])
-        plt.ylabel(df.keys()[i])
-    plt.xlabel('step')
-    plt.savefig(f'{plotdir}/imet-overviewplot_uavcoords.svg')
-    plt.savefig(f'{plotdir}/imet-overviewplot_uavcoords.png')
+    # END START HACK
+    # compute height above ground
+    transformer = pyproj.Transformer.from_crs("epsg:4326", str(dem.rio.crs))
+    reverse_transformer = pyproj.Transformer.from_crs(str(dem.rio.crs), "epsg:4326")
+    # convert lat and lon to coordinates of DEM
+    x, y = transformer.transform(df_merged['lat_uav'], df_merged['lon_uav'])
+    # get the corresponding height (linearly interpolated)
+    df_merged['z_dem'] =  dem['band_data'][0].interp(x=('z',x),y=('z',y)).values
+    df_merged['alt_over_ground'] = df_merged['alt_uav'] - df_merged['z_dem']
 
-    fig = plt.figure(figsize=(8, 8))
-    ax = plt.axes(projection='3d')
-    ax.grid()
-    ax.plot3D(df['lon_uav'], df['lat_uav'], df['alt_uav'])
-    cf = ax.scatter(df['lon_uav'], df['lat_uav'], df['alt_uav'], c=df['t'], cmap=plt.cm.Reds)
-    ax.set_xlabel('lon_uav')
-    ax.set_ylabel('lat_uav')
-    ax.set_zlabel('alt_uav')
-    cb = plt.colorbar(cf)
-    cb.set_label('t')
-    plt.savefig(f'{plotdir}/imet-3D-lat-lon-alt-t_uavcoords.svg')
 
-    plt.figure()
-    plt.subplot(221)
-    plt.scatter(df['lat'], df['lat_uav'])
-    plt.xlabel('lat imet')
-    plt.ylabel('lat uav')
-    plt.subplot(222)
-    plt.scatter(df['lon'], df['lon_uav'])
-    plt.xlabel('lon imet')
-    plt.ylabel('lon uav')
-    plt.subplot(223)
-    plt.scatter(df['alt'], df['alt_uav'])
-    plt.xlabel('alt imet')
+# combined plots
+
+df = df_merged
+n_vars = df.shape[1]
+plt.figure(figsize=(7, 20))
+for i in range(n_vars):
+    plt.subplot(n_vars, 1, i + 1)
+    plt.plot(df[df.keys()[i]])
+    plt.ylabel(df.keys()[i])
+plt.xlabel('step')
+plt.savefig(f'{plotdir}/imet-overviewplot_uavcoords.svg')
+plt.savefig(f'{plotdir}/imet-overviewplot_uavcoords.png')
+
+fig = plt.figure(figsize=(8, 8))
+ax = plt.axes(projection='3d')
+ax.grid()
+ax.plot3D(df['lon_uav'], df['lat_uav'], df['alt_uav'])
+cf = ax.scatter(df['lon_uav'], df['lat_uav'], df['alt_uav'], c=df['t'], cmap=plt.cm.Reds)
+ax.set_xlabel('lon_uav')
+ax.set_ylabel('lat_uav')
+ax.set_zlabel('alt_uav')
+cb = plt.colorbar(cf)
+cb.set_label('t')
+plt.savefig(f'{plotdir}/imet-3D-lat-lon-alt-t_uavcoords.svg')
+
+plt.figure()
+plt.subplot(221)
+plt.scatter(df['lat'], df['lat_uav'])
+plt.xlabel('lat imet')
+plt.ylabel('lat uav')
+plt.subplot(222)
+plt.scatter(df['lon'], df['lon_uav'])
+plt.xlabel('lon imet')
+plt.ylabel('lon uav')
+plt.subplot(223)
+plt.scatter(df['alt'], df['alt_uav'])
+plt.xlabel('alt imet')
+plt.ylabel('alt uav')
+plt.savefig(f'{plotdir}/imet-imetcoord_vs_uavcoords.svg')
+
+# height vs variables
+
+plt.figure(figsize=(30, 10))
+for i in range(n_vars):
+    plt.subplot(1, n_vars, i + 1)
+    plt.plot(df[df.keys()[i]].values, df['alt_uav'])
+    plt.xlabel(df.keys()[i])
     plt.ylabel('alt uav')
-    plt.savefig(f'{plotdir}/imet-imetcoord_vs_uavcoords.svg')
-
-
-
-    # height vs variables
-
-    plt.figure(figsize=(30, 10))
-    for i in range(n_vars):
-        plt.subplot(1,n_vars, i + 1)
-        plt.plot(df[df.keys()[i]].values, df['alt_uav'])
-        plt.xlabel(df.keys()[i])
-        plt.ylabel('alt uav')
-    plt.savefig(f'{plotdir}/alt_vs_vars_uavcoords.svg')
-    plt.savefig(f'{plotdir}/alt_vs_vars_uavcoords.png')
-
-
-
+plt.savefig(f'{plotdir}/alt_vs_vars_uavcoords.svg')
+plt.savefig(f'{plotdir}/alt_vs_vars_uavcoords.png')
