@@ -44,6 +44,8 @@ else:
 plotdir = f'plots/{os.path.splitext(imet_file)[0]}'
 os.makedirs(plotdir, exist_ok=True)
 
+variables = ['t', 'h', 't2', 'p']
+
 # read DEM data
 dem_file = 'demdata/DEMsOfDiffFromBaseMapQaa_20192022julsept.tif'
 # the dem file is in the EPSG:3413 projection, unit metres
@@ -80,7 +82,7 @@ if ifile_dq != 'none':
 
     # merge dq position into imet data
     df_merged = df_imet.copy().drop('index', axis=1)
-    df_merged.rename(columns={'lat':'lat_imet', 'lon':'lon_imet', 'alt':'alt_imet'})
+    df_merged.rename(columns={'lat': 'lat_imet', 'lon': 'lon_imet', 'alt': 'alt_imet'})
     df_merged['lat'] = df_dq['lat'] / 1e7
     df_merged['lon'] = df_dq['lon'] / 1e7
     df_merged['alt'] = df_dq['alt'] / 1e3
@@ -91,9 +93,34 @@ else:
     # remove all "weird" lat and lons
     df = df.query('lon > 180')
 
+# compute height above ground (with DEM model)
+transformer = pyproj.Transformer.from_crs("epsg:4326", str(dem.rio.crs))
+reverse_transformer = pyproj.Transformer.from_crs(str(dem.rio.crs), "epsg:4326")
+# TODO START HACK
+if hack_shift_coordinats_to_quaamarujuk:
+    print("WARNING!!! HACK!!! COORDINATES CHANGED!!! ONLY FOR TESTING!!!!")
+    # target_lat = 71.14060944896276
+    # target_lon = -51.24673910464138
+    target_x = -223097
+    target_y = - 2048595
+    target_lat, target_lon = reverse_transformer.transform(target_x, target_y)
+    df['lat'] = df['lat'][0] - (df['lat'] - target_lat)
+    df['lon'] = df['lon'][0] - (df['lon'] - target_lon)
+
+# END START HACK
+
+# convert lat and lon to coordinates of DEM
+x, y = transformer.transform(df['lat'], df['lon'])
+df['x'] = x
+df['y'] = y
+# get the corresponding height (linearly interpolated)
+df['z_dem'] = dem['band_data'][0].interp(x=('z', x), y=('z', y)).values
+df['alt_over_ground'] = df['alt']
+# create grid for plotting DEM
+X_dem, Y_dem = np.meshgrid(dem['x'], dem['y'])
 
 plt.figure()
-plt.scatter(df_imet_raw['lon'], df_imet_raw['lat'], c=df_imet_raw['t'])
+plt.scatter(df['lon'], df['lat'], c=df['t'])
 plt.colorbar()
 plt.savefig(f'{plotdir}/imet-lat-lon-p.svg')
 
@@ -107,7 +134,6 @@ plt.xlabel('step')
 plt.savefig(f'{plotdir}/imet-overviewplot.svg')
 plt.savefig(f'{plotdir}/imet-overviewplot.png')
 
-
 plt.figure()
 plt.scatter(df['lon'], df['lat'], c=df['alt'])
 cb = plt.colorbar()
@@ -115,53 +141,86 @@ cb.set_label('alt')
 plt.plot(df['lon'], df['lat'])
 plt.savefig(f'{plotdir}/imet-lat-lon-alt.svg')
 
-fig = plt.figure(figsize=(8, 8))
-ax = plt.axes(projection='3d')
-ax.grid()
-ax.plot3D(df['lon'], df['lat'], df['alt'])
-cf = ax.scatter(df['lon'], df['lat'], df['alt'], c=df['t'], cmap=plt.cm.Reds)
-ax.set_xlabel('lon')
-ax.set_ylabel('lat')
-ax.set_zlabel('alt')
-cb = plt.colorbar(cf)
-cb.set_label('t')
-plt.savefig(f'{plotdir}/imet-3D-lat-lon-alt-t.svg')
+# 3d plot of individual variables with lat lon
+for varname in variables:
+    fig = plt.figure(figsize=(8, 8))
+    ax = plt.axes(projection='3d')
+    ax.grid()
+    ax.plot3D(df['lon'], df['lat'], df['alt'])
+    cf = ax.scatter(df['lon'], df['lat'], df['alt'], c=df[varname], cmap=plt.cm.Reds)
+    ax.set_xlabel('lon')
+    ax.set_ylabel('lat')
+    ax.set_zlabel('alt')
+    cb = plt.colorbar(cf)
+    cb.set_label(varname)
+    plt.savefig(f'{plotdir}/imet-3D-lat-lon-alt-{varname}.svg')
 
-n_vars = df.shape[1]
-plt.figure(figsize=(10, 20))
-for i in range(n_vars):
-    plt.subplot(n_vars, 1, i + 1)
-    plt.plot(df[df.keys()[i]])
-    plt.ylabel(df.keys()[i])
-plt.xlabel('step')
-plt.savefig(f'{plotdir}/imet-overviewplot.svg')
-plt.savefig(f'{plotdir}/imet-overviewplot.png')
+# 3d plot with x,y and height countours from DEM
+# for varname in variables + ['position']:
+for varname in ['position']:
+    fig = plt.figure(figsize=(8, 8))
+    ax = plt.axes(projection='3d')
+    ax.grid()
+    ax.plot_surface(X_dem, Y_dem, dem['band_data'][0], alpha=0.6)
+    ax.plot3D(df['x'], df['y'], df['alt'])
+    if varname != 'position':
+        cf = ax.scatter(df['x'], df['y'], df['alt'], c=df[varname], cmap=plt.cm.Reds)
+    ax.set_xlabel('x')
+    ax.set_ylabel('y')
+    ax.set_zlabel('alt')
+    # set initial 3d view
+    ax.view_init(azim=-165, elev=11)
+    # make scale of height smaller
+    ax.set_box_aspect((1, 1, 0.5))
+    cb = plt.colorbar(cf)
+    cb.set_label(varname)
+    plt.savefig(f'{plotdir}/imet-3D-x-y-alt-DEM-{varname}.svg')
+
+# zoomed in to track
+# for varname in variables + ['position']:
+for varname in ['position']:
+    fig = plt.figure(figsize=(8, 8))
+    ax = plt.axes(projection='3d')
+    ax.grid()
+    xmin, xmax = np.min(df['x']), np.max(df['x'])
+    ymin, ymax = np.min(df['y']), np.max(df['y'])
+    zmin, zmax = np.min(df['alt']), np.max(df['alt'])
+    x1 = np.argmax(X_dem[0] > xmin)
+    x2 = np.argmax(X_dem[0] > xmax)
+    y1 = np.argmin(Y_dem[:, 0] > ymin)
+    y2 = np.argmin(Y_dem[:, 0] > ymax)
+    ax.plot_surface(X_dem[y2:y1, x1:x2], Y_dem[y2:y1, x1:x2], dem['band_data'][0][y2:y1, x1:x2], alpha=0.6)
+    ax.plot3D(df['x'], df['y'], df['alt'])
+    if varname != 'position':
+        cf = ax.scatter(df['x'], df['y'], df['alt'], c=df[varname], cmap=plt.cm.Reds)
+    ax.set_xlabel('x')
+    ax.set_ylabel('y')
+    ax.set_zlabel('alt')
+    # set initial 3d view
+    ax.view_init(azim=-165, elev=11)
+    # make scale of height smaller
+    ax.set_box_aspect((1, 1, 0.5))
+    cb = plt.colorbar(cf)
+    cb.set_label(varname)
+    plt.savefig(f'{plotdir}/imet-3D-x-y-alt-DEM-{varname}_closeup.svg')
 
 # height vs variables
 
 plt.figure(figsize=(30, 10))
-for i in range(n_vars):
-    plt.subplot(1, n_vars, i + 1)
-    plt.plot(df[df.keys()[i]].values, df['alt'], marker='x')
-    plt.xlabel(df.keys()[i])
+for i, varname in enumerate(variables):
+    plt.subplot(1, len(variables), i + 1)
+    plt.plot(df[varname].values, df['alt'], marker='x')
+    plt.xlabel(varname)
     plt.ylabel('alt')
 plt.savefig(f'{plotdir}/alt_vs_vars.svg')
 plt.savefig(f'{plotdir}/alt_vs_vars.png')
 
-# TODO START HACK
-if hack_shift_coordinats_to_quaamarujuk:
-    print("WARNING!!! HACK!!! COORDINATES CHANGED!!! ONLY FOR TESTING!!!!")
-    target_lat = 71.172
-    target_lon = -51.1
-    df['lat'] = df['lat'][0] - (df['lat'] - target_lat)
-    df['lon'] = df['lon'][0] - (df['lon'] - target_lon)
-
-# END START HACK
-# compute height above ground
-transformer = pyproj.Transformer.from_crs("epsg:4326", str(dem.rio.crs))
-reverse_transformer = pyproj.Transformer.from_crs(str(dem.rio.crs), "epsg:4326")
-# convert lat and lon to coordinates of DEM
-x, y = transformer.transform(df['lat'], df['lon'])
-# get the corresponding height (linearly interpolated)
-df['z_dem'] =  dem['band_data'][0].interp(x=('z',x),y=('z',y)).values
-df['alt_over_ground'] = df['alt']
+# height over DEM vs variables
+plt.figure(figsize=(30, 10))
+for i, varname in enumerate(variables + ['alt']):
+    plt.subplot(1, len(variables) + 1, i + 1)
+    plt.plot(df[varname].values, df['alt_over_ground'], marker='x')
+    plt.xlabel(varname)
+    plt.ylabel('alt over ground')
+plt.savefig(f'{plotdir}/alt_over_ground_vs_vars.svg')
+plt.savefig(f'{plotdir}/alt_over_ground_vs_vars.png')
