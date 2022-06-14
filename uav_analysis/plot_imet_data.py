@@ -31,7 +31,7 @@ parser.add_argument('deltaquad_file', type=str,
                     help='optional. number of deltaquad log (e.g. 11_31_28.ulg)',
                     default='none', nargs='?')
 
-hack_shift_coordinats_to_quaamarujuk = False
+hack_shift_coordinats_to_quaamarujuk = True
 
 if intaractive:
     imet_file = "imet/20220503/LOG06.txt"
