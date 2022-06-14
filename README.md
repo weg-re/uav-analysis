@@ -1,7 +1,8 @@
 
 
 ## uav analysis requirements
-to install the requirements, you need miniconda. after you insallte dminiconda, run the following commands
+to install the requirements, you need miniconda (https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe)
+. after you install miniconda, run the following commands
 (on linux/macos in the terminal, on windows in the miniconda prompt)
 ```commandline
 conda create -n uav-analysis-env
@@ -15,21 +16,41 @@ We have two different measurements:
 * Deltaquad drone with Imet sensor. the imet sensor has problems with the positions, therefore we also use the drone
   position data
 * DJI Drone with XQ2 sensor
-TODO: what do we need for the imet data? in which form does it come?
+Deltaquad data needs to be provided in the original .ulg file as input
+
+XQ2 data needs to be in .csv format (exported from the data transfer program)
 
 
-Deltaquad data can be converted directly by the plotting scripts, so here we just need the original .ulg file as input
+## How-to
+### XQ2 data
+#### get data from sensor
+* connect XQ2 to PC with USB cable
+* make sure your system language is English (otherwise the iMet application does not work properly)
+* start the application "iMet-X User Controller"
+* click Settings > Com Port > ComX   (e.g. Com3). if you see multiple ComX, try both. if after selecting you see
+  "iMet-XQ" in the menu bar, you have the correct one.
+* click iMet-XQ > Save memory Data, and choose a location and filename (.csv)
+#### analyze and plot
+* open anaconda shell
+* conda activate uav-analysis-env
+* navigate to folder where the .py scripts are stored
+* ```python plot_xq2_data.py path/to/xq2file.txt```, where xq2file.txt is the file from the step above
 
-The XQ2 
-
-
-## using the scripts
-
+### Imet + Deltaquad
 * windows: open anaconda shell, linux: open terminal
 * conda activate uav-analysis-env
-* navigate to folder
-* ```python plot_uav_data.py imetfile [deltaquadfile]```
-* ```python plot_xq2_data.py xq2file```
+* navigate to folder where the .py scripts are stored
+* ```python plot_uav_data.py imetfile deltaquadfile.ulg```
+
+### interactive 3D plots
+if you want to view the 3dplots interactively, type
+```ipython -i plot_xq2_data.py path/to/xq2file.txt```
+or
+```ipython -i plot_xq2_data.py path/to/xq2file.txt```
+
+
+
+
 
 
 ### 3d visualizations
