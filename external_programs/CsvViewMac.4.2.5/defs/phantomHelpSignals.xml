@@ -1,0 +1,1361 @@
+<?xml version="1.0"?>
+<signals>
+	<timeAxis>
+		<sigName>OSD:flyTime [s]</sigName>
+		<colName>OSD.flyTime [s]</colName>
+		<numType>float</numType>
+	</timeAxis>
+	<axis>
+		<name>velocityMetric</name>
+		<label>m/s</label>
+	</axis>
+	<axis>
+		<name>velocityImperial</name>
+		<label>mph</label>
+	</axis>
+	<!-- <series> <sigName>﻿CUSTOM:updateTime [local]</sigName> <colName>﻿CUSTOM.updateTime 
+		[local]</colName> <numType>float</numType> <description></description> <category></category> 
+		</series> -->
+
+	<series>
+		<sigName>OSD:latitude</sigName>
+		<colName>OSD.latitude</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>OSD:longitude</sigName>
+		<colName>OSD.longitude</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>OSD:height [ft]</sigName>
+		<colName>OSD.height [ft]</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>OSD:heightMax [ft]</sigName>
+		<colName>OSD.heightMax [ft]</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>OSD:vpsHeight [ft]</sigName>
+		<colName>OSD.vpsHeight [ft]</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>OSD:altitude [ft]</sigName>
+		<colName>OSD.altitude [ft]</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>OSD:hSpeed [MPH]</sigName>
+		<colName>OSD.hSpeed [MPH]</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>OSD:hSpeedMax [MPH]</sigName>
+		<colName>OSD.hSpeedMax [MPH]</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>OSD:xSpeed [MPH]</sigName>
+		<colName>OSD.xSpeed [MPH]</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>OSD:xSpeedMax [MPH]</sigName>
+		<colName>OSD.xSpeedMax [MPH]</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>OSD:ySpeed [MPH]</sigName>
+		<colName>OSD.ySpeed [MPH]</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>OSD:ySpeedMax [MPH]</sigName>
+		<colName>OSD.ySpeedMax [MPH]</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>OSD:zSpeed [MPH]</sigName>
+		<colName>OSD.zSpeed [MPH]</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>OSD:zSpeedMax [MPH]</sigName>
+		<colName>OSD.zSpeedMax [MPH]</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>OSD:pitch</sigName>
+		<colName>OSD.pitch</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>OSD:roll</sigName>
+		<colName>OSD.roll</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>OSD:yaw</sigName>
+		<colName>OSD.yaw</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>OSD:yaw [360]</sigName>
+		<colName>OSD.yaw [360]</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Computed:downlinkSigQuality:C</sigName>
+		<colName>Computed.downlinkSigQuality:C</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Computed:tiltInclination:C</sigName>
+		<colName>Computed.tiltInclination:C</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Computed:tiltDirection:C</sigName>
+		<colName>Computed.tiltDirection:C</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>Computed:yawUnWrapped:C</sigName>
+		<colName>Computed.yawUnWrapped:C</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<state>
+		<sigName>OSD:flyCState</sigName>
+		<colName>OSD.flycState</colName>
+		<inverse></inverse>
+		<stateSpec>
+			<index>6</index>
+			<stateName>GPS_Atti</stateName>
+			<color>white</color>
+		</stateSpec>
+	</state>
+	<state>
+		<sigName>OSD:flycCommand</sigName>
+		<colName>OSD.flycCommand</colName>
+		<inverse></inverse>
+		<stateSpec>
+			<index>0</index>
+			<stateName>Other</stateName>
+			<color>white</color>
+		</stateSpec>
+	</state>
+	<state>
+		<sigName>OSD:flightAction</sigName>
+		<colName>OSD.flightAction</colName>
+		<inverse></inverse>
+		<stateSpec>
+			<index>0</index>
+			<stateName>None</stateName>
+			<color>white</color>
+		</stateSpec>
+	</state>
+	<series>
+		<sigName>OSD:gpsNum</sigName>
+		<colName>OSD.gpsNum</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>OSD:gpsLevel</sigName>
+		<colName>OSD.gpsLevel</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<state>
+		<sigName>OSD:isGPSUsed</sigName>
+		<colName>OSD.isGPSUsed</colName>
+		<inverse />
+		<description>GPS Used for Horizontal Velocity</description>
+		<stateSpec>
+			<stateName>TRUE</stateName>
+			<color>green</color>
+		</stateSpec>
+	</state>
+	<state>
+		<sigName>OSD:nonGPSCause</sigName>
+		<colName>OSD.nonGPSCause</colName>
+		<description></description>
+		<category></category>
+		<stateSpec>
+			<index>6</index>
+			<stateName>YAW_ERROR_LARGE</stateName>
+			<color></color>
+		</stateSpec>
+		<stateSpec>
+			<index>7</index>
+			<stateName>COMPASS_ERROR_LARGE</stateName>
+			<color></color>
+		</stateSpec>
+		<stateSpec>
+			<index>5</index>
+			<stateName>SPEED_ERROR_LARGE</stateName>
+			<color></color>
+		</stateSpec>
+		<stateSpec>
+			<index>4</index>
+			<stateName>GPS_POSITION_NONMATCH</stateName>
+			<color></color>
+		</stateSpec>
+		<stateSpec>
+			<index>0</index>
+			<stateName>Normal</stateName>
+			<color>white</color>
+		</stateSpec>
+	</state>
+
+	<static>
+		<sigName>droneType</sigName>
+		<colName>OSD.droneType</colName>
+	</static>
+	<state>
+		<sigName>OSD:isSwaveWork</sigName>
+		<colName>OSD.isSwaveWork</colName>
+		<inverse />
+		<stateSpec>
+			<stateName>TRUE</stateName>
+			<color>green</color>
+		</stateSpec>
+		<stateSpec>
+			<stateName>FALSE</stateName>
+			<color>red</color>
+		</stateSpec>
+	</state>
+	<state>
+		<sigName>OSD:waveError</sigName>
+		<colName>OSD.waveError</colName>
+		<inverse />
+		<stateSpec>
+			<stateName>FALSE</stateName>
+			<color>white</color>
+		</stateSpec>
+	</state>
+	<state>
+		<sigName>OSD:goHomeStatus</sigName>
+		<colName>OSD.goHomeStatus</colName>
+		<inverse />
+	</state>
+	<static>
+		<sigName>batteryType</sigName>
+		<colName>OSD.batteryType</colName>
+	</static>
+	<static>
+		<sigName>ctrlDevice</sigName>
+		<colName>OSD.ctrlDevice</colName>
+	</static>
+	<state>
+		<sigName>OSD:isOnGround</sigName>
+		<colName>OSD.isOnGround</colName>
+		<inverse />
+	</state>
+	<state>
+		<sigName>OSD:isMotorOn</sigName>
+		<colName>OSD.isMotorOn</colName>
+		<inverse />
+	</state>
+	<state>
+		<sigName>OSD:isMotorBlocked</sigName>
+		<colName>OSD.isMotorBlocked</colName>
+		<inverse />
+	</state>
+	<state>
+		<sigName>OSD:motorStartFailedCause</sigName>
+		<colName>OSD.motorStartFailedCause</colName>
+		<inverse />
+	</state>
+	<state>
+		<sigName>OSD:motorFailReason</sigName>
+		<colName>OSD.motorFailReason</colName>
+		<inverse />
+	</state>
+	<state>
+		<sigName>OSD:isImuPreheated</sigName>
+		<colName>OSD.isImuPreheated</colName>
+		<inverse />
+	</state>
+	<state>
+		<sigName>OSD:imuInitFailReason</sigName>
+		<colName>OSD.imuInitFailReason</colName>
+		<inverse />
+	</state>
+	<state>
+		<sigName>OSD:isAcceletorOverRange</sigName>
+		<colName>OSD.isAcceletorOverRange</colName>
+		<inverse />
+	</state>
+	<state>
+		<sigName>OSD:isBarometerDeadInAir</sigName>
+		<colName>OSD.isBarometerDeadInAir</colName>
+		<inverse />
+	</state>
+	<state>
+		<sigName>OSD:isCompassError</sigName>
+		<colName>OSD.isCompassError</colName>
+		<inverse />
+	</state>
+	<state>
+		<sigName>OSD:isGoHomeHeightModified</sigName>
+		<colName>OSD.isGoHomeHeightModified</colName>
+		<inverse />
+	</state>
+	<state>
+		<sigName>OSD:canIOCWork</sigName>
+		<colName>OSD.canIOCWork</colName>
+		<inverse />
+	</state>
+	<state>
+		<sigName>OSD:isNotEnoughForce</sigName>
+		<colName>OSD.isNotEnoughForce</colName>
+		<inverse />
+	</state>
+	<state>
+		<sigName>OSD:isOutOfLimit</sigName>
+		<colName>OSD.isOutOfLimit</colName>
+		<inverse />
+	</state>
+	<state>
+		<sigName>OSD:isPropellerCatapult</sigName>
+		<colName>OSD.isPropellerCatapult</colName>
+		<inverse />
+	</state>
+	<state>
+		<sigName>OSD:isVibrating</sigName>
+		<colName>OSD.isVibrating</colName>
+		<inverse />
+	</state>
+	<state>
+		<sigName>OSD:isVisionUsed</sigName>
+		<colName>OSD.isVisionUsed</colName>
+		<inverse />
+		<stateSpec>
+			<stateName>TRUE</stateName>
+			<color>white</color>
+		</stateSpec>
+	</state>
+	<state>
+		<sigName>OSD:voltageWarning</sigName>
+		<colName>OSD.voltageWarning</colName>
+		<inverse />
+	</state>
+	<series>
+		<sigName>GIMBAL:pitch</sigName>
+		<colName>GIMBAL.pitch</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>GIMBAL:roll</sigName>
+		<colName>GIMBAL.roll</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>GIMBAL:yaw</sigName>
+		<colName>GIMBAL.yaw</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>GIMBAL:yaw [360]</sigName>
+		<colName>GIMBAL.yaw [360]</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<state>
+		<sigName>GIMBAL:isPitchAtLimit</sigName>
+		<colName>GIMBAL.isPitchAtLimit</colName>
+		<inverse />
+	</state>
+	<state>
+		<sigName>GIMBAL:isRollAtLimit</sigName>
+		<colName>GIMBAL.isRollAtLimit</colName>
+		<inverse />
+	</state>
+	<state>
+		<sigName>GIMBAL:isYawAtLimit</sigName>
+		<colName>GIMBAL.isYawAtLimit</colName>
+		<inverse />
+	</state>
+	<state>
+		<sigName>GIMBAL:isStuck</sigName>
+		<colName>GIMBAL.isStuck</colName>
+		<inverse />
+	</state>
+	<state>
+		<sigName>CAMERA:isPhoto</sigName>
+		<colName>CAMERA.isPhoto</colName>
+		<inverse />
+	</state>
+	<state>
+		<sigName>CAMERA:isVideo</sigName>
+		<colName>CAMERA.isVideo</colName>
+		<inverse />
+	</state>
+	<static>
+		<sigName>CAMERA:filename</sigName>
+		<colName>CAMERA.filename</colName>
+
+	</static>
+	<series>
+		<sigName>RC:aileron</sigName>
+		<colName>RC.aileron</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>RC:elevator</sigName>
+		<colName>RC.elevator</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>RC:throttle</sigName>
+		<colName>RC.throttle</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>RC:rudder</sigName>
+		<colName>RC.rudder</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<state>
+		<sigName>RC:mode</sigName>
+		<colName>RC.mode</colName>
+		<inverse />
+	</state>
+	<state>
+		<sigName>RC:goHome</sigName>
+		<colName>RC.goHome</colName>
+		<inverse />
+	</state>
+	<state>
+		<sigName>RC:goHomePressed</sigName>
+		<colName>RC.goHomePressed</colName>
+		<inverse />
+	</state>
+	<series>
+		<sigName>RC:record</sigName>
+		<colName>RC.record</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>RC:shutter</sigName>
+		<colName>RC.shutter</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>BATTERY:chargeLevel</sigName>
+		<colName>BATTERY.chargeLevel</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>BATTERY:currentPV [V]</sigName>
+		<colName>BATTERY.currentPV [V]</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>BATTERY:currentCapacity [mAh]</sigName>
+		<colName>BATTERY.currentCapacity [mAh]</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>BATTERY:fullCapacity [mAh]</sigName>
+		<colName>BATTERY.fullCapacity [mAh]</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>BATTERY:voltage [V]</sigName>
+		<colName>BATTERY.voltage [V]</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<state>
+		<sigName>BATTERY:isCellVoltageEstimated</sigName>
+		<colName>BATTERY.isCellVoltageEstimated</colName>
+		<inverse />
+	</state>
+	<series>
+		<sigName>BATTERY:cellVoltage1 [V]</sigName>
+		<colName>BATTERY.cellVoltage1 [V]</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>BATTERY:cellVoltage2 [V]</sigName>
+		<colName>BATTERY.cellVoltage2 [V]</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>BATTERY:cellVoltage3 [V]</sigName>
+		<colName>BATTERY.cellVoltage3 [V]</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>BATTERY:cellVoltage4 [V]</sigName>
+		<colName>BATTERY.cellVoltage4 [V]</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>BATTERY:cellVoltage5 [V]</sigName>
+		<colName>BATTERY.cellVoltage5 [V]</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>BATTERY:cellVoltage6 [V]</sigName>
+		<colName>BATTERY.cellVoltage6 [V]</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>BATTERY:maxCellVoltageDeviation</sigName>
+		<colName>BATTERY.maxCellVoltageDeviation</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<state>
+		<sigName>BATTERY:isCellVoltageDeviationHigh</sigName>
+		<colName>BATTERY.isCellVoltageDeviationHigh</colName>
+		<inverse />
+	</state>
+	<state>
+		<sigName>BATTERY:isVoltageLow</sigName>
+		<colName>BATTERY.isVoltageLow</colName>
+		<inverse />
+	</state>
+	<series>
+		<sigName>BATTERY:temperature [F]</sigName>
+		<colName>BATTERY.temperature [F]</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>BATTERY:minTemperature [F]</sigName>
+		<colName>BATTERY.minTemperature [F]</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>BATTERY:maxTemperature [F]</sigName>
+		<colName>BATTERY.maxTemperature [F]</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>BATTERY:temperature [C]</sigName>
+		<colName>BATTERY.temperature [C]</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>BATTERY:minTemperature [C]</sigName>
+		<colName>BATTERY.minTemperature [C]</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>BATTERY:maxTemperature [C]</sigName>
+		<colName>BATTERY.maxTemperature [C]</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>BATTERY:usefulTime [s]</sigName>
+		<colName>BATTERY.usefulTime [s]</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>BATTERY:goHomeTime [s]</sigName>
+		<colName>BATTERY.goHomeTime [s]</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>BATTERY:landTime [s]</sigName>
+		<colName>BATTERY.landTime [s]</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>BATTERY:goHomeBattery</sigName>
+		<colName>BATTERY.goHomeBattery</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>BATTERY:landBattery</sigName>
+		<colName>BATTERY.landBattery</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>BATTERY:safeFlyRadius</sigName>
+		<colName>BATTERY.safeFlyRadius</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>BATTERY:volumeConsume</sigName>
+		<colName>BATTERY.volumeConsume</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<state>
+		<sigName>BATTERY:status</sigName>
+		<colName>BATTERY.status</colName>
+		<inverse></inverse>
+		<stateSpec>
+			<stateName>None</stateName>
+			<color>white</color>
+		</stateSpec>
+		<description></description>
+		<category></category>
+	</state>
+	<state>
+		<sigName>BATTERY:goHomeStatus</sigName>
+		<colName>BATTERY.goHomeStatus</colName>
+		<stateSpec>
+			<stateName></stateName>
+			<color>white</color>
+		</stateSpec>
+	</state>
+
+	<series>
+		<sigName>BATTERY:goHomeCountdown</sigName>
+		<colName>BATTERY.goHomeCountdown</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<state>
+		<sigName>BATTERY:lowWarning</sigName>
+		<colName>BATTERY.lowWarning</colName>
+		<inverse />
+		<stateSpec>
+			<stateName>False</stateName>
+			<color>white</color>
+		</stateSpec>
+	</state>
+	<state>
+		<sigName>BATTERY:lowWarningGoHome</sigName>
+		<colName>BATTERY.lowWarningGoHome</colName>
+		<inverse />
+		<stateSpec>
+			<stateName>False</stateName>
+			<color>white</color>
+		</stateSpec>
+	</state>
+	<state>
+		<sigName>BATTERY:seriousLowWarning</sigName>
+		<colName>BATTERY.seriousLowWarning</colName>
+		<inverse />
+		<stateSpec>
+			<stateName>False</stateName>
+			<color>white</color>
+		</stateSpec>
+	</state>
+	<state>
+		<sigName>BATTERY:seriousLowWarningLanding</sigName>
+		<colName>BATTERY.seriousLowWarningLanding</colName>
+		<inverse />
+		<stateSpec>
+			<stateName>False</stateName>
+			<color>white</color>
+		</stateSpec>
+	</state>
+	<series>
+		<sigName>BATTERY:timesCharged</sigName>
+		<colName>BATTERY.timesCharged</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<state>
+		<sigName>MC:failSafeAction</sigName>
+		<colName>MC.failSafeAction</colName>
+		<inverse />
+	</state>
+	<series>
+		<sigName>HOME:latitude</sigName>
+		<colName>HOME.latitude</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>HOME:longitude</sigName>
+		<colName>HOME.longitude</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>OSD:height [m]</sigName>
+		<colName>OSD.height [m]</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>OSD:heightMax [m]</sigName>
+		<colName>OSD.heightMax [m]</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>OSD:vpsHeight [m]</sigName>
+		<colName>OSD.vpsHeight [m]</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>OSD:altitude [m]</sigName>
+		<colName>OSD.altitude [m]</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>OSD:hSpeed [m/s]</sigName>
+		<colName>OSD.hSpeed [m/s]</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>OSD:hSpeedMax [m/s]</sigName>
+		<colName>OSD.hSpeedMax [m/s]</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>OSD:xSpeed [m/s]</sigName>
+		<colName>OSD.xSpeed [m/s]</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>OSD:xSpeedMax [m/s]</sigName>
+		<colName>OSD.xSpeedMax [m/s]</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>OSD:ySpeed [m/s]</sigName>
+		<colName>OSD.ySpeed [m/s]</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>OSD:ySpeedMax [m/s]</sigName>
+		<colName>OSD.ySpeedMax [m/s]</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>OSD:zSpeed [m/s]</sigName>
+		<colName>OSD.zSpeed [m/s]</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>OSD:zSpeedMax [m/s]</sigName>
+		<colName>OSD.zSpeedMax [m/s]</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>HOME:distance [ft]</sigName>
+		<colName>HOME.distance [ft]</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>HOME:height [ft]</sigName>
+		<colName>HOME.height [ft]</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>HOME:distance [m]</sigName>
+		<colName>HOME.distance [m]</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>HOME:height [m]</sigName>
+		<colName>HOME.height [m]</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<state>
+		<sigName>HOME:isHomeRecord</sigName>
+		<colName>HOME.isHomeRecord</colName>
+		<inverse></inverse>
+		<stateSpec>
+			<stateName>FALSE</stateName>
+			<color>red</color>
+		</stateSpec>
+		<stateSpec>
+			<stateName>TRUE</stateName>
+			<color>white</color>
+		</stateSpec>
+	</state>
+	<state>
+		<sigName>HOME:goHomeMode</sigName>
+		<colName>HOME.goHomeMode</colName>
+		<inverse></inverse>
+	</state>
+	<series>
+		<sigName>HOME:aircraftHeadDirection</sigName>
+		<colName>HOME.aircraftHeadDirection</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<state>
+		<sigName>HOME:isDynamicHomePointEnabled</sigName>
+		<colName>HOME.isDynamicHomePointEnabled</colName>
+		<inverse></inverse>
+	</state>
+	<state>
+		<sigName>HOME:isReachedLimitDistance</sigName>
+		<colName>HOME.isReachedLimitDistance</colName>
+		<inverse></inverse>
+	</state>
+	<state>
+		<sigName>HOME:isReachedLimitHeight</sigName>
+		<colName>HOME.isReachedLimitHeight</colName>
+		<inverse></inverse>
+	</state>
+	<state>
+		<sigName>HOME:goHomeStatus</sigName>
+		<colName>HOME.goHomeStatus</colName>
+		<inverse></inverse>
+		<stateSpec>
+			<stateName>Standby</stateName>
+			<color>white</color>
+		</stateSpec>
+		<description></description>
+		<category></category>
+	</state>
+	<state>
+		<sigName>HOME:hasGoHome</sigName>
+		<colName>HOME.hasGoHome</colName>
+		<inverse></inverse>
+		<stateSpec>
+			<stateName>FALSE</stateName>
+			<color>red</color>
+		</stateSpec>
+		<stateSpec>
+			<stateName>TRUE</stateName>
+			<color>white</color>
+		</stateSpec>
+	</state>
+	<state>
+		<sigName>HOME:isCompassCeleing</sigName>
+		<colName>HOME.isCompassCeleing</colName>
+		<inverse></inverse>
+	</state>
+	<state>
+		<sigName>HOME:compassCeleStatus</sigName>
+		<colName>HOME.compassCeleStatus</colName>
+		<inverse></inverse>
+	</state>
+	<state>
+		<sigName>HOME:isBeginnerMode</sigName>
+		<colName>HOME.isBeginnerMode</colName>
+		<inverse></inverse>
+		<stateSpec>
+			<stateName>FALSE</stateName>
+			<color>white</color>
+		</stateSpec>
+	</state>
+	<state>
+		<sigName>HOME:isIOCEnabled</sigName>
+		<colName>HOME.isIOCEnabled</colName>
+		<inverse></inverse>
+		<stateSpec>
+			<stateName>FALSE</stateName>
+			<color>red</color>
+		</stateSpec>
+	</state>
+	<state>
+		<sigName>HOME:iocMode</sigName>
+		<colName>HOME.iocMode</colName>
+		<inverse></inverse>
+		<stateSpec>
+			<stateName>CourseLock</stateName>
+			<color>green</color>
+		</stateSpec>
+	</state>
+	<series>
+		<sigName>HOME:goHomeHeight [ft]</sigName>
+		<colName>HOME.goHomeHeight [ft]</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>HOME:goHomeHeight [m]</sigName>
+		<colName>HOME.goHomeHeight [m]</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>HOME:courseLockAngle</sigName>
+		<colName>HOME.courseLockAngle</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<state>
+		<sigName>HOME:isWingBroken</sigName>
+		<colName>HOME.isWingBroken</colName>
+		<inverse></inverse>
+		<stateSpec>
+			<stateName>FALSE</stateName>
+			<color>white</color>
+		</stateSpec>
+	</state>
+	<series>
+		<sigName>HOME:forceLandingHeight [ft]</sigName>
+		<colName>HOME.forceLandingHeight [ft]</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>HOME:forceLandingHeight [m]</sigName>
+		<colName>HOME.forceLandingHeight [m]</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<static>
+		<sigName>FLYxxx.DAT index</sigName>
+		<colName>HOME.dataRecorderFileIndex</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</static>
+	<!-- <static> <sigName>appType</sigName> <colName>RECOVER.appType</colName> 
+		<numType>float</numType> <description></description> <category></category> 
+		</static> <static> <sigName>appVersion</sigName> <colName>RECOVER.appVersion</colName> 
+		<numType>float</numType> <description></description> <category></category> 
+		</static> -->
+	<!-- <series> <sigName>DETAILS:totalTime [s]</sigName> <colName>DETAILS.totalTime 
+		[s]</colName> <numType>float</numType> <description></description> <category></category> 
+		</series> <series> <sigName>DETAILS:totalDistance [ft]</sigName> <colName>DETAILS.totalDistance 
+		[ft]</colName> <numType>float</numType> <description></description> <category></category> 
+		</series> <series> <sigName>DETAILS:maxHeight [ft]</sigName> <colName>DETAILS.maxHeight 
+		[ft]</colName> <numType>float</numType> <description></description> <category></category> 
+		</series> <series> <sigName>DETAILS:maxHorizontalSpeed [MPH]</sigName> <colName>DETAILS.maxHorizontalSpeed 
+		[MPH]</colName> <numType>float</numType> <description></description> <category></category> 
+		</series> <series> <sigName>DETAILS:maxVerticalSpeed [MPH]</sigName> <colName>DETAILS.maxVerticalSpeed 
+		[MPH]</colName> <numType>float</numType> <description></description> <category></category> 
+		</series> <series> <sigName>DETAILS:photoNum</sigName> <colName>DETAILS.photoNum</colName> 
+		<numType>float</numType> <description></description> <category></category> 
+		</series> <series> <sigName>DETAILS:videoTime [s]</sigName> <colName>DETAILS.videoTime 
+		[s]</colName> <numType>float</numType> <description></description> <category></category> 
+		</series> -->
+	<static>
+		<sigName>aircraftName</sigName>
+		<colName>DETAILS.aircraftName</colName>
+	</static>
+	<static>
+		<sigName>aircraftSerial</sigName>
+		<colName>DETAILS.aircraftSerial</colName>
+
+	</static>
+	<static>
+		<sigName>cameraSerial</sigName>
+		<colName>DETAILS.cameraSerial</colName>
+
+	</static>
+	<static>
+		<sigName>rcSerial</sigName>
+		<colName>DETAILS.rcSerial</colName>
+
+	</static>
+	<static>
+		<sigName>batterySerial</sigName>
+		<colName>DETAILS.batterySerial</colName>
+
+	</static>
+	<static>
+		<sigName>appName</sigName>
+		<colName>DETAILS.appName</colName>
+
+	</static>
+	<static>
+		<sigName>appType</sigName>
+		<colName>DETAILS.appType</colName>
+
+	</static>
+	<static>
+		<sigName>appVersion</sigName>
+		<colName>DETAILS.appVersion</colName>
+
+	</static>
+	<series>
+		<sigName>APPGPS:latitude</sigName>
+		<colName>APPGPS.latitude</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>APPGPS:longitude</sigName>
+		<colName>APPGPS.longitude</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>APPGPS:accuracy</sigName>
+		<colName>APPGPS.accuracy</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+
+
+	<series>
+		<sigName>ImuCalcs:posN [ft]:C</sigName>
+		<colName>ImuCalcs.posN [ft]:C</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>ImuCalcs:posE [ft]:C</sigName>
+		<colName>ImuCalcs.posE [ft]:C</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>ImuCalcs:posD [ft]:C</sigName>
+		<colName>ImuCalcs.posD [ft]:C</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>ImuCalcs:Height [ft]:C</sigName>
+		<colName>ImuCalcs.Height [ft]:C</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>ImuCalcs:velN [MPH]:C</sigName>
+		<colName>ImuCalcs.velN [MPH]:C</colName>
+		<numType>float</numType>
+		<axis>velocityImperial</axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>ImuCalcs:velE [MPH]:C</sigName>
+		<colName>ImuCalcs.velE [MPH]:C</colName>
+		<numType>float</numType>
+		<axis>velocityImperial</axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>ImuCalcs:velD [MPH]:C</sigName>
+		<colName>ImuCalcs.velD [MPH]:C</colName>
+		<numType>float</numType>
+		<axis>velocityImperial</axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>ImuCalcs:velH [MPH]:C</sigName>
+		<colName>ImuCalcs.velH [MPH]:C</colName>
+		<numType>float</numType>
+		<axis>velocityImperial</axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>ImuCalcs:diffVelN [MPH]:C</sigName>
+		<colName>ImuCalcs.diffVelN [MPH]:C</colName>
+		<numType>float</numType>
+		<axis>velocityImperial</axis>
+		<description></description>
+		<category></category>
+	</series>
+
+	<series>
+		<sigName>ImuCalcs:diffVelE [MPH]:C</sigName>
+		<colName>ImuCalcs.diffVelE [MPH]:C</colName>
+		<numType>float</numType>
+		<axis>velocityImperial</axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>ImuCalcs:diffVelD [MPH]:C</sigName>
+		<colName>ImuCalcs.diffVelD [MPH]:C</colName>
+		<numType>float</numType>
+		<axis>velocityImperial</axis>
+		<description></description>
+		<category></category>
+	</series>
+
+	<series>
+		<sigName>ImuCalcs:posN [m]:C</sigName>
+		<colName>ImuCalcs.posN [m]:C</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+
+	<series>
+		<sigName>ImuCalcs:posE [m]:C</sigName>
+		<colName>ImuCalcs.posE [m]:C</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>ImuCalcs:posD [m]:C</sigName>
+		<colName>ImuCalcs.posD [m]:C</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>ImuCalcs:Height [m]:C</sigName>
+		<colName>ImuCalcs.Height [m]:C</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>ImuCalcs:velN [m/s]:C</sigName>
+		<colName>ImuCalcs.velN [m/s]:C</colName>
+		<numType>float</numType>
+		<axis>velocityMetric</axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>ImuCalcs:velE [m/s]:C</sigName>
+		<colName>ImuCalcs.velE [m/s]:C</colName>
+		<numType>float</numType>
+		<axis>velocityMetric</axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>ImuCalcs:velD [m/s]:C</sigName>
+		<colName>ImuCalcs.velD [m/s]:C</colName>
+		<numType>float</numType>
+		<axis>velocityMetric</axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>ImuCalcs:velH [m/s]:C</sigName>
+		<colName>ImuCalcs.velH [m/s]:C</colName>
+		<numType>float</numType>
+		<axis>velocityMetric</axis>
+		<description></description>
+		<category></category>
+	</series>
+
+	<series>
+		<sigName>ImuCalcs:diffVelN [m/s]:C</sigName>
+		<colName>ImuCalcs.diffVelN [m/s]:C</colName>
+		<numType>float</numType>
+		<axis>velocityMetric</axis>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>ImuCalcs:diffVelE [m/s]:C</sigName>
+		<colName>ImuCalcs.diffVelE [m/s]:C</colName>
+		<numType>float</numType>
+		<axis>velocityMetric</axis>
+		<description></description>
+		<category></category>
+	</series>
+
+	<series>
+		<sigName>ImuCalcs:diffVelD [m/s]:C</sigName>
+		<colName>ImuCalcs.diffVelD [m/s]:C</colName>
+		<numType>float</numType>
+		<axis>velocityMetric</axis>
+		<description></description>
+		<category></category>
+	</series>
+
+
+	<series>
+		<sigName>ImuCalcs:Lat:C</sigName>
+		<colName>ImuCalcs.Lat:C</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+	<series>
+		<sigName>ImuCalcs:Long:C</sigName>
+		<colName>ImuCalcs.Long:C</colName>
+		<numType>float</numType>
+		<description></description>
+		<category></category>
+	</series>
+
+	<state>
+		<sigName>ImuCalcs:velocityError:C</sigName>
+		<colName>ImuCalcs.velocityError:C</colName>
+		<inverse />
+		<stateSpec>
+			<stateName>false</stateName>
+			<color>white</color>
+		</stateSpec>
+		<stateSpec>
+			<stateName>True</stateName>
+			<color>red</color>
+		</stateSpec>
+	</state>
+	<state>
+		<sigName>ImuCalcs:positionError:C</sigName>
+		<colName>ImuCalcs.positionError:C</colName>
+		<inverse />
+		<stateSpec>
+			<stateName>false</stateName>
+			<color>white</color>
+		</stateSpec>
+		<stateSpec>
+			<stateName>True</stateName>
+			<color>blue</color>
+		</stateSpec>
+	</state>
+	<!-- <series> <sigName>APP:message</sigName> <colName>APP.message</colName> 
+		<numType>float</numType> <description></description> <category></category> 
+		</series> <series> <sigName>APP:tip</sigName> <colName>APP.tip</colName> 
+		<numType>float</numType> <description></description> <category></category> 
+		</series> <series> <sigName>APP:warning</sigName> <colName>APP.warning</colName> 
+		<numType>float</numType> <description></description> <category></category> 
+		</series> -->
+</signals>
