@@ -116,6 +116,13 @@ df['y'] = y
 # get the corresponding height (linearly interpolated)
 df['z_dem'] = dem['band_data'][0].interp(x=('z', x), y=('z', y)).values
 df['alt_over_ground'] = df['alt']
+# save the track of the drone in DEM coordinates for external 3D plotting with mayavi.
+# we simply save the whole dataframe
+outdir = 'projected_tracks/'+os.path.splitext(imet_file)[0]
+os.makedirs(outdir, exist_ok=True)
+df.to_csv(outdir+'/track_converted.csv', index=False)
+
+
 # create grid for plotting DEM
 X_dem, Y_dem = np.meshgrid(dem['x'], dem['y'])
 
@@ -161,12 +168,13 @@ for varname in ['position']:
     fig = plt.figure(figsize=(8, 8))
     ax = plt.axes(projection='3d')
     ax.grid()
-    ax.plot_surface(X_dem, Y_dem, dem['band_data'][0], alpha=0.6)
-    ax.plot3D(df['x'], df['y'], df['alt'])
+    # the DEM is (y,x)
+    ax.plot_surface(Y_dem, X_dem, dem['band_data'][0], alpha=0.6)
+    ax.plot3D(df['y'], df['x'], df['alt'])
     if varname != 'position':
         cf = ax.scatter(df['x'], df['y'], df['alt'], c=df[varname], cmap=plt.cm.Reds)
-    ax.set_xlabel('x')
-    ax.set_ylabel('y')
+    ax.set_xlabel('y')
+    ax.set_ylabel('x')
     ax.set_zlabel('alt')
     # set initial 3d view
     ax.view_init(azim=-165, elev=11)
@@ -189,12 +197,12 @@ for varname in ['position']:
     x2 = np.argmax(X_dem[0] > xmax)
     y1 = np.argmin(Y_dem[:, 0] > ymin)
     y2 = np.argmin(Y_dem[:, 0] > ymax)
-    ax.plot_surface(X_dem[y2:y1, x1:x2], Y_dem[y2:y1, x1:x2], dem['band_data'][0][y2:y1, x1:x2], alpha=0.6)
-    ax.plot3D(df['x'], df['y'], df['alt'])
+    ax.plot_surface(Y_dem[y2:y1, x1:x2],X_dem[y2:y1, x1:x2], dem['band_data'][0][y2:y1, x1:x2], alpha=0.6)
+    ax.plot3D(df['y'], df['x'], df['alt'])
     if varname != 'position':
-        cf = ax.scatter(df['x'], df['y'], df['alt'], c=df[varname], cmap=plt.cm.Reds)
-    ax.set_xlabel('x')
-    ax.set_ylabel('y')
+        cf = ax.scatter(df['y'], df['x'], df['alt'], c=df[varname], cmap=plt.cm.Reds)
+    ax.set_xlabel('y')
+    ax.set_ylabel('x')
     ax.set_zlabel('alt')
     # set initial 3d view
     ax.view_init(azim=-165, elev=11)
