@@ -40,13 +40,24 @@ XQ2 data needs to be in .csv format (exported from the data transfer program)
 * windows: open anaconda shell, linux: open terminal
 * conda activate uav-analysis-env
 * navigate to folder where the .py scripts are stored
-* ```python plot_uav_data.py imetfile deltaquadfile.ulg```
+* ```python plot_imet_data.py imetfile deltaquadfile.ulg```
 
 ### interactive 3D plots
 if you want to view the 3dplots interactively, type
 ```ipython -i plot_xq2_data.py path/to/xq2file.txt```
 or
-```ipython -i plot_xq2_data.py path/to/xq2file.txt```
+```ipython -i plot_imet_data.py imetfile deltaquadfile.ulg```
+
+### better 3d plot of track with mayavi
+the mayavi library offers better interactive 3d plots than matplotlib
+we need a different environment for this. plot_imet_data.py automatically
+exports the data we need to the directory ```projected tracks```
+```commandline
+conda activate mayavi-env
+ipython -i track_dem_3dplot.py path/to/track_converted.csv
+```
+
+
 
 
 
