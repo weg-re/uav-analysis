@@ -1,6 +1,7 @@
 
 
-## uav analysis requirements
+## prerequesites
+### conda environemnt
 to install the requirements, you need miniconda (https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe)
 . after you install miniconda, run the following commands
 (on linux/macos in the terminal, on windows in the miniconda prompt)
@@ -10,6 +11,24 @@ conda activate uav-analysis-env
 conda install ipython numpy pandas seaborn matplotlib xarray rasterio
 pip install pyulog rioxarray
 ```
+
+if you want to use the advancec 3d plot script, you need a second environment
+```commandline
+conda create -n mayavi-env
+conda install -c conda-forge xarray  mayavi ipython netcdf4 pandas
+```
+### data
+the DEM data is needed and needs to be placed in 
+```
+demdata/DEMsOfDiffFromBaseMapQaa_20192022julsept.tif
+demdata/DEMsOfDiffFromBaseMapQaa_20192022julsept.nc
+```
+
+`demdata/DEMsOfDiffFromBaseMapQaa_20192022julsept.nc` can be created from 
+`demdata/DEMsOfDiffFromBaseMapQaa_20192022julsept.tif` with the following command (available in the conda environment)
+`gdal_translate -of netCDF DEMsOfDiffFromBaseMapQaa_20192022julsept.tif DEMsOfDiffFromBaseMapQaa_20192022julsept.nc
+`
+
 
 ## converting uav data
 We have two different measurements:
