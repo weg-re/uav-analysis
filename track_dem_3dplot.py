@@ -7,12 +7,22 @@ conda install -c conda-forge xarray  mayavi ipython netcdf4 pandas
 
 
 """
+import argparse
 import xarray as xr
 import pandas as pd
 from mayavi import mlab
 import __main__ as main
 
-ifile = 'projected_tracks/imet/20220503/LOG06/track_converted.csv'
+intaractive = not hasattr(main, '__file__')
+
+parser = argparse.ArgumentParser()
+parser.add_argument('ifile', type=str)
+
+if intaractive:
+    ifile = 'projected_tracks/imet/20220503/LOG06/track_converted.csv'
+else:
+    args = parser.parse_args()
+    ifile = args.ifile
 
 dem_file_nc = 'demdata/DEMsOfDiffFromBaseMapQaa_20192022julsept.nc'
 # the dem file is in the EPSG:3413 projection, unit metres
