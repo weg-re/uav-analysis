@@ -36,8 +36,8 @@ hack_shift_coordinats_to_quaamarujuk = False
 if intaractive:
     # imet_file = "imet/20220503/LOG06.txt"
     imet_file = "/home/sscher/projekte/wegre/fielddays/imet/LOG20.txt"
-    #ifile_dq = 'deltaquad/11_31_28.ulg'
-    ifile_dq='none'
+    ifile_dq = '/home/sscher/projekte/wegre/fielddays/DQ/2022-06-30/12_49_18.ulg'
+    # ifile_dq='none'
 else:
     args = parser.parse_args()
     imet_file = args.imet_file
@@ -45,6 +45,9 @@ else:
 
 plotdir = f'plots/{os.path.splitext(imet_file)[0]}'
 os.makedirs(plotdir, exist_ok=True)
+
+# the imet sensor sometimes has coordinates that are clearly wrong
+remove_weird_imet_coords = True
 
 variables = ['t', 'h', 't2', 'p']
 
@@ -62,6 +65,17 @@ df_imet_raw = df_imet_raw.drop('index', axis=1)
 
 assert (~df_imet_raw['datetime'].duplicated().any())
 
+# lat lon conversion
+df_imet_raw['lat'] = df_imet_raw['lat'] / 10
+df_imet_raw['lon'] = df_imet_raw['lon'] / 10
+if remove_weird_imet_coords:
+    orig_len = len(df_imet_raw)
+    # remove all "weird" lat and lons from imet data
+    df_imet_raw = df_imet_raw.query('(alt < 1000) & (alt > -20)')
+    df_imet_raw = df_imet_raw.query('lon < 180')
+    df_imet_raw = df_imet_raw.query('(lat > 60) & (lat < 80)')
+    new_len = len(df_imet_raw)
+    print(f'removed {orig_len-new_len} of {orig_len} ({(orig_len-new_len)/orig_len} %) points with unrealistic coordinates')
 if ifile_dq != 'none':
 
     # replace imet position data with position data from drone
@@ -85,6 +99,10 @@ if ifile_dq != 'none':
     # merge dq position into imet data
     df_merged = df_imet.copy().drop('index', axis=1)
     df_merged.rename(columns={'lat': 'lat_imet', 'lon': 'lon_imet', 'alt': 'alt_imet'})
+    # conserve imet lat an lon
+    df_merged['lat_imet'] = df_merged['lat'].copy()
+    df_merged['lon_imet'] = df_merged['lon'].copy()
+    df_merged['alt_imet'] = df_merged['alt'].copy()
     df_merged['lat'] = df_dq['lat'] / 1e7
     df_merged['lon'] = df_dq['lon'] / 1e7
     df_merged['alt'] = df_dq['alt'] / 1e3
@@ -92,12 +110,6 @@ if ifile_dq != 'none':
     df = df_merged
 else:
     df = df_imet_raw
-    df['lat'] = df['lat'] / 10
-    df['lon'] = df['lon'] / 10
-    # remove all "weird" lat and lons
-    df = df.query('(alt < 1000) & (alt > -20)')
-    df = df.query('lon < 180')
-    df = df.query('(lat > 60) & (lat < 80)')
 
 # compute height above ground (with DEM model)
 transformer = pyproj.Transformer.from_crs("epsg:4326", str(dem.rio.crs))
@@ -238,3 +250,13 @@ for i, varname in enumerate(variables + ['alt']):
     plt.ylabel('alt over ground')
 plt.savefig(f'{plotdir}/alt_over_ground_vs_vars.svg')
 plt.savefig(f'{plotdir}/alt_over_ground_vs_vars.png')
+
+
+if ifile_dq != 'none':
+    plt.figure(figsize=(15,6))
+    for i, v in enumerate(('lat', 'lon' ,'alt')):
+        plt.subplot(1,3,i+1)
+        plt.scatter(df[v], df[v+'_imet'])
+        plt.xlabel(v+' DQ')
+        plt.ylabel(v+' imet')
+    plt.savefig(f'{plotdir}/dq_coords_vs_imet_coords.svg')
