@@ -31,11 +31,13 @@ parser.add_argument('deltaquad_file', type=str,
                     help='optional. number of deltaquad log (e.g. 11_31_28.ulg)',
                     default='none', nargs='?')
 
-hack_shift_coordinats_to_quaamarujuk = True
+hack_shift_coordinats_to_quaamarujuk = False
 
 if intaractive:
-    imet_file = "imet/20220503/LOG06.txt"
-    ifile_dq = 'deltaquad/11_31_28.ulg'
+    # imet_file = "imet/20220503/LOG06.txt"
+    imet_file = "/home/sscher/projekte/wegre/fielddays/imet/LOG20.txt"
+    #ifile_dq = 'deltaquad/11_31_28.ulg'
+    ifile_dq='none'
 else:
     args = parser.parse_args()
     imet_file = args.imet_file
@@ -90,8 +92,12 @@ if ifile_dq != 'none':
     df = df_merged
 else:
     df = df_imet_raw
+    df['lat'] = df['lat'] / 10
+    df['lon'] = df['lon'] / 10
     # remove all "weird" lat and lons
-    df = df.query('lon > 180')
+    df = df.query('(alt < 1000) & (alt > -20)')
+    df = df.query('lon < 180')
+    df = df.query('(lat > 60) & (lat < 80)')
 
 # compute height above ground (with DEM model)
 transformer = pyproj.Transformer.from_crs("epsg:4326", str(dem.rio.crs))
