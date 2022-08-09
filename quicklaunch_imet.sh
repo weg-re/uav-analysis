@@ -5,4 +5,4 @@ ifile_imet=$(zenity --file-selection \
        --title "Select imet file" \
        --filename "${PWD}/")
 
-python plot_uav_data.py $ifile_imet
+python plot_imet_data.py $ifile_imet
