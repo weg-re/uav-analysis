@@ -9,8 +9,6 @@ from read_uav_data import read_xq2_data
 
 intaractive = not hasattr(main, '__file__')
 
-remove_first_n_entries = 32
-
 parser = argparse.ArgumentParser()
 parser.add_argument('ifile', type=str, help='filename of xq2 log (csv file)')
 
@@ -26,8 +24,6 @@ plot_base_name = Path(ifile).stem
 os.makedirs(plotdir, exist_ok=True)
 
 df = read_xq2_data(ifile)
-
-df = df.iloc[remove_first_n_entries:]
 
 df.rename(columns={'Longitude': 'lon', 'Latitude': 'lat', 'Altitude': 'alt',
                    'Air Temperature': 'T'}, inplace=True)
